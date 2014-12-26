@@ -30,8 +30,8 @@ def find(wiki)
   Find.find("#{GyazzDir}/#{id(wiki)}") do |f|
     # puts f
 
-    return if count > 200
-    count += 1
+    # return if count > 200
+    # count += 1
 
     title = ""
     # if f =~ /\/([0-9a-f]{32})\/([0-9a-f]{32})\/([0-9]{14})/ then
@@ -72,10 +72,13 @@ def find(wiki)
             # 出力
             gyazoids.each { |gyazoid|
               $data[gyazoid] = {} unless $data[gyazoid]
-              $data[gyazoid]['text'] = text unless $data[gyazoid]['text']
-              if text.length > $data[gyazoid]['text'].length then
-                $data[gyazoid]['text'] = text
+
+              unless $data[gyazoid]['text'] then
+                $data[gyazoid]['text'] = [text]
+              else
+                $data[gyazoid]['text'] << text unless $data[gyazoid]['text'].member?(text)
               end
+
               $data[gyazoid]['keywords'] = [] unless $data[gyazoid]['keywords']
               keywords = {}
               keywords[title] = true

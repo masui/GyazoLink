@@ -83,10 +83,13 @@ gyazzdata.each { |title,entry|
     # 出力
     gyazoids.each { |gyazoid|
       data[gyazoid] = {} unless data[gyazoid]
-      data[gyazoid]['text'] = text unless data[gyazoid]['text']
-      if text.length > data[gyazoid]['text'].length then
-        data[gyazoid]['text'] = text
+
+      unless data[gyazoid]['text'] then
+        data[gyazoid]['text'] = [text]
+      else
+        data[gyazoid]['text'] << text unless data[gyazoid]['text'].member?(text)
       end
+
       data[gyazoid]['keywords'] = [] unless data[gyazoid]['keywords']
       keywords = {}
       keywords[title] = true
@@ -102,4 +105,3 @@ gyazzdata.each { |title,entry|
 }
 
 puts data.to_json
-
