@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>title</title>
+<style type="text/css">
+img.sim {
+  height:120
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+var sim = {};
+var src;
+
+$(function() {
+  topimage = $('<img>');
+  topimage.attr('height','100pt');
+  topimage.attr('id','src');
+  $('body').append(topimage);
+  $('body').append($('<hr>'));
+  for(var i=0;i<40;i++){
+    image = $('<img>');
+    image.attr('id','sim'+i);
+    image.attr('class','sim');
+    $('body').append(image);
+  }
+
+  $.getJSON("./sim.json", function(json){
+    sim = json;
+    src = "fa338940e291a8ca512b6f495297d770";
+    src = "ff19b4489fb63ef262b32e72591fef32";
+    src = "fdcf8798c291b52553dbd343faa03c34";
+    display();
+  });
+
+  $("img").on("click", function(){
+    src = $(this).attr('gyazoid');
+    display();
+  });
+});
+
+
+function display(){
+  $('#src').attr('src',"http://gyazo.com/"+src+".png");
+  simimages = sim[src];
+  for(i=0;i<40;i++){
+    $('#sim'+i).attr('src',"http://gyazo.com/"+sim[src][i]+".png");
+    $('#sim'+i).attr('gyazoid',sim[src][i]);
+  }
+}
+
+</script>
+
+</head>
+<body>
+<!--
+<img id='src' height=100>
+
+<p>
+<img class='sim' id='sim0'>
+<img class='sim' id='sim1'>
+<img class='sim' id='sim2'>
+<img class='sim' id='sim3'>
+<img class='sim' id='sim4'>
+<img class='sim' id='sim5'>
+<img class='sim' id='sim6'>
+<img class='sim' id='sim7'>
+<img class='sim' id='sim8'>
+<img class='sim' id='sim9'>
+<img class='sim' id='sim10'>
+<img class='sim' id='sim11'>
+<img class='sim' id='sim12'>
+<img class='sim' id='sim13'>
+<img class='sim' id='sim14'>
+<img class='sim' id='sim15'>
+<img class='sim' id='sim16'>
+<img class='sim' id='sim17'>
+<img class='sim' id='sim18'>
+<img class='sim' id='sim19'>
+-->
+
+</body>
+</html>
+
+
