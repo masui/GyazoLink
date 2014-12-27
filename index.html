@@ -3,9 +3,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Gyazo芋蔓検索</title>
 <style type="text/css">
+body {
+  background-color: #cccccc;
+}
+img.top {
+  margin: 4pt;
+  height:180;
+  border-radius:5pt;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
 img.sim {
-  margin: 2pt;
+  margin: 4pt;
   height:120;
+  border-radius:5pt;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -20,6 +31,7 @@ $(function() {
   topimage = $('<img>');
   topimage.attr('height','160pt');
   topimage.attr('id','src');
+  topimage.attr('class','top');
   topimage.css('float','left');
   topimage.css('margin','4pt');
   $('body').append(topimage);
@@ -93,7 +105,8 @@ function search(query){
   for(d in data){
     keywords = data[d]['keywords'];
     for(var i=0;i<keywords.length;i++){
-      if(keywords[i].match(query)){
+      re = new RegExp(query,'i');
+      if(keywords[i].match(re)){
         results.push(d);
         break;
       }
@@ -136,5 +149,4 @@ function display(){
 <body>
 </body>
 </html>
-
 

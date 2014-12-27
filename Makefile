@@ -16,4 +16,4 @@ sim: ids tfidf
 	ruby sim.rb | jq . > sim.json
 
 upload:
-	scp index.html sim.json pitecan.com:/www/www.pitecan.com/tmp/GyazoComment
+	scp index.html sim.json data.json pitecan.com:/www/www.pitecan.com/tmp/GyazoComment
