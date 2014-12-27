@@ -22,25 +22,29 @@ def process(title,text,keywords,data)
     kw = $1
     next if kw =~ /.(jpg|png|gif)$/
     k << kw
-
-    gyazoids.each { |gyazoid|
-      data[gyazoid] = {} unless data[gyazoid]
-      text.strip!
-      text.gsub!(/\t/,' ')
-      unless data[gyazoid]['text'] then
-        data[gyazoid]['text'] = [text]
-      else
-        data[gyazoid]['text'] << text unless data[gyazoid]['text'].member?(text)
-      end
-      data[gyazoid]['keywords'] = [] unless data[gyazoid]['keywords']
-      kk = {}
-      kk[title] = true
-      data[gyazoid]['keywords'].each { |keyword|
-        kk[keyword] = true
-      }
-      data[gyazoid]['keywords'] = kk.keys
-    }
   end
+
+  gyazoids.each { |gyazoid|
+    data[gyazoid] = {} unless data[gyazoid]
+    text.strip!
+    text.gsub!(/\t/,' ')
+    unless data[gyazoid]['text'] then
+      data[gyazoid]['text'] = [text]
+    else
+      data[gyazoid]['text'] << text unless data[gyazoid]['text'].member?(text)
+    end
+    data[gyazoid]['keywords'] = [] unless data[gyazoid]['keywords']
+    kk = {}
+    kk[title] = true
+    k.each { |keyword|
+      kk[keyword] = true
+    }
+    data[gyazoid]['keywords'].each { |keyword|
+      kk[keyword] = true
+    }
+    data[gyazoid]['keywords'] = kk.keys
+  }
+
 end
 
 Find.find("/Users/masui/Presentations") do |path|
