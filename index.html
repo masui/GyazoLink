@@ -98,6 +98,7 @@ $(function() {
   //});
 
   $("img").on("click", function(){
+    alert('click');
     src = $(this).attr('gyazoid');
     display();
   });
@@ -124,15 +125,7 @@ function search(query){
     }
     if(results.length > 40) break;
   }
-  for(i=0;i<40;i++){
-    $('#sim'+i).css('display',"none");
-  }
-  for(i=0;i<results.length;i++){
-    $('#sim'+i).css('display',"inline");
-    $('#sim'+i).attr('src',"http://gyazo.com/"+results[i]+".png");
-    $('#sim'+i).attr('gyazoid',results[i]);
-    $('#sim'+i).attr('title',data[results[i]]['keywords'].join(", "));
-  }
+  showsimimages(results);
 }
 
 function display(){
@@ -143,16 +136,26 @@ function display(){
     $('#comments').text(data[src]['keywords'].join(", "));
     //$('#query').val(data[src]['keywords'].join(", "));
   }
-  simimages = sim[src];
-  for(i=0;i<40;i++){
-    $('#sim'+i).css('display',"none");
+  $('.sim').remove();
+  showsimimages(sim[src]);
+}
+
+function showsimimages(images){
+  $('.sim').remove();
+  for(i=0;i<images.length;i++){
+    image = $('<img>');
+    image.attr('id','sim'+i);
+    image.attr('class','sim');
+    image.attr('src',"http://gyazo.com/"+images[i]+".png");
+    image.attr('gyazoid',images[i]);
+    image.attr('title',data[images[i]]['keywords'].join(", "));
+    image.css('display',"inline");
+    $('body').append(image);
   }
-  for(i=0;i<40;i++){
-    $('#sim'+i).attr('src',"http://gyazo.com/"+sim[src][i]+".png");
-    $('#sim'+i).attr('gyazoid',sim[src][i]);
-    $('#sim'+i).attr('title',data[sim[src][i]]['keywords'].join(", "));
-    $('#sim'+i).css('display',"inline");
-  }
+  $("img").on("click", function(){
+    src = $(this).attr('gyazoid');
+    display();
+  });
 }
 
 </script>
