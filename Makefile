@@ -12,5 +12,8 @@ ids:
 	ruby ids.rb | jq . > ids.json
 tfidf:
 	ruby tfidf.rb | jq . > tfidf.json
-sim:
+sim: ids tfidf
 	ruby sim.rb | jq . > sim.json
+
+upload:
+	scp index.html sim.json pitecan.com:/www/www.pitecan.com/tmp/GyazoComment

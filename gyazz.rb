@@ -71,6 +71,8 @@ def find(wiki)
 
             # 出力
             gyazoids.each { |gyazoid|
+              next if title.to_s == ''
+
               $data[gyazoid] = {} unless $data[gyazoid]
 
               unless $data[gyazoid]['text'] then
