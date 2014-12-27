@@ -2,9 +2,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Gyazo芋蔓検索</title>
+<!-- background-image: url("https://assets.gyazo.com/assets/top/top_bg-21b3febb1974f7a504855a0541031794.jpg"); -->
 <style type="text/css">
 body {
-  background-color: #cccccc;
+  background-image: url("http://gyazo.com/d9c8052e9fa19988baba2a31fd5cb917.png")
+  background-position:center 0px;
+  background-repeat:no-repeat;background-color:#021b5b;position:relative;
+  height:631px;
 }
 img.top {
   margin: 4pt;
@@ -28,6 +32,13 @@ var tfidf = {};
 var src;
 
 $(function() {
+  query = $('<input>');
+  query.attr('type','text');
+  query.css('width','90%');
+  query.attr('id','query');
+  $('body').append(query);
+  $('body').append($('<br clear="all">'));
+
   topimage = $('<img>');
   topimage.attr('height','160pt');
   topimage.attr('id','src');
@@ -36,20 +47,14 @@ $(function() {
   topimage.css('margin','4pt');
   $('body').append(topimage);
 
-  query = $('<input>');
-  query.attr('type','text');
-  query.css('width','100%');
-  query.attr('id','query');
-  $('body').append(query);
-  $('body').append($('<br clear="all">'));
-
   div = $('<div>');
   div.attr('height','160pt');
   div.attr('id','comments');
   div.css('margin','4pt');
   div.css('overflow','hidden');
   div.css('float','left');
-  //$('body').append(div);
+  div.css('color','#ffffff');
+  $('body').append(div);
 
   //textarea = $('<textarea>');
   //textarea.css('height','120pt');
@@ -57,8 +62,13 @@ $(function() {
   //textarea.attr('id','comments');
   //$('body').append(textarea);
 
-  //$('body').append($('<br clear="all">'));
-  //$('body').append($('<hr>'));
+  $('body').append($('<br clear="all">'));
+  hr = $('<hr>');
+  hr.css('height','4pt');
+  hr.css('color','#ffffff');
+  hr.css('background-color','#ffffff');
+  $('body').append(hr);
+
   for(var i=0;i<40;i++){
     image = $('<img>');
     image.attr('id','sim'+i);
@@ -100,6 +110,7 @@ $(function() {
 });
 
 function search(query){
+  $('#comments').css('display','none');
   $('#src').css('display','none');
   results = [];
   for(d in data){
@@ -125,11 +136,12 @@ function search(query){
 }
 
 function display(){
+  $('#comments').css('display','block');
   $('#src').css('display','block');
   $('#src').attr('src',"http://gyazo.com/"+src+".png");
   if(data[src]){
-    // $('#comments').text(data[src]['keywords'].join(", "));
-    $('#query').val(data[src]['keywords'].join(", "));
+    $('#comments').text(data[src]['keywords'].join(", "));
+    //$('#query').val(data[src]['keywords'].join(", "));
   }
   simimages = sim[src];
   for(i=0;i<40;i++){
