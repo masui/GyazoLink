@@ -1,0 +1,136 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Gyazo芋蔓検索</title>
+<style type="text/css">
+body {
+  background-image: url("http://gyazo.com/d9c8052e9fa19988baba2a31fd5cb917.png")
+  background-position:center 0px;
+  background-repeat:no-repeat;background-color:#021b5b;position:relative;
+  height:631px;
+}
+img.top {
+  margin: 4pt;
+  height:180;
+  border-radius:5pt;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
+img.sim {
+  margin: 4pt;
+  height:120;
+  border-radius:5pt;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+var sim = {};
+var data = {};
+var ids = [];
+var tfidf = {};
+var src;
+
+$(function() {
+  query = $('<input>');
+  query.attr('type','text');
+  query.css('width','90%');
+  query.attr('id','query');
+  $('body').append(query);
+  $('body').append($('<br clear="all">'));
+
+  topimage = $('<img>');
+  topimage.attr('height','160pt');
+  topimage.attr('id','src');
+  topimage.attr('class','top');
+  topimage.css('float','left');
+  topimage.css('margin','4pt');
+  $('body').append(topimage);
+
+  div = $('<div>');
+  div.attr('height','160pt');
+  div.attr('id','comments');
+  div.css('margin','4pt');
+  div.css('overflow','hidden');
+  div.css('float','left');
+  div.css('color','#ffffff');
+  $('body').append(div);
+
+  $('body').append($('<br clear="all">'));
+  hr = $('<hr>');
+  hr.css('height','4pt');
+  hr.css('color','#ffffff');
+  hr.css('background-color','#ffffff');
+  $('body').append(hr);
+
+  for(var i=0;i<40;i++){
+    image = $('<img>');
+    image.attr('id','sim'+i);
+    image.attr('class','sim');
+    $('body').append(image);
+  }
+
+  src = 'fcabe14b63788dca961dad3a9f8796fb';
+  src = '1ae719bf0c4eb8607f1cb9b385dbad92';
+  display();
+
+  $("img").on("click", function(){
+    src = $(this).attr('gyazoid');
+    display();
+  });
+
+  $("#query").on("keydown", function(e){
+    if(e.keyCode == 13){
+      search($('#query').val());
+    }
+  });
+});
+
+function search(query){
+  $('#comments').css('display','none');
+  $('#src').css('display','none');
+
+  $.getJSON("/search/"+query, function(list){
+    showimages(list['ids']);
+  });
+}
+
+function display(){
+  $('#comments').css('display','block');
+  $('#src').css('display','block');
+  $('#src').attr('src',"http://gyazo.com/"+src+".png");
+  // キーワード表示
+  $.getJSON("/attr/"+src, function(attr){
+    $('#comments').text(attr['keywords'].join(", "));
+  });
+
+  $.getJSON("/similar/"+src, function(list){
+    images = list['ids'];
+    showimages(images);
+  });
+}
+
+function showimages(images){
+  $('.sim').remove();
+  for(i=0;i<images.length;i++){
+    image = $('<img>');
+    image.attr('id','sim'+i);
+    image.attr('class','sim');
+    image.attr('src',"http://gyazo.com/"+images[i]+".png");
+    image.attr('gyazoid',images[i]);
+    // image.attr('title',data[images[i]]['keywords'].join(", "));
+    image.css('display',"inline");
+    $('body').append(image);
+  }
+  $("img").on("click", function(){
+    src = $(this).attr('gyazoid');
+    display();
+  });
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
