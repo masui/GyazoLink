@@ -11,7 +11,8 @@ body {
 }
 img.top {
   margin: 4pt;
-  height:180;
+  max-height:180px;
+  max-width:240px;
   border-radius:5pt;
   box-shadow: 3px 3px rgba(0,0,0,0.4);;
 }
@@ -19,7 +20,14 @@ img.sim {
   margin: 4pt;
   height:120;
   border-radius:5pt;
+  vertical-align: top;
   box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
+a:link {
+  color:white;
+}
+a:visited {
+  color:white;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -31,6 +39,10 @@ var tfidf = {};
 var src;
 
 $(function() {
+  s = $('<span>検索: </span>');
+  s.css('color','#ffffff');
+  $('body').append(s);
+
   query = $('<input>');
   query.attr('type','text');
   query.css('width','90%');
@@ -43,24 +55,24 @@ $(function() {
   topimage.attr('id','src');
   topimage.attr('class','top');
   topimage.css('float','left');
-  topimage.css('margin','4pt');
+  topimage.css('margin','6pt');
   $('body').append(topimage);
 
   div = $('<div>');
   div.attr('height','160pt');
   div.attr('id','comments');
-  div.css('margin','4pt');
+  div.css('margin','6pt');
   div.css('overflow','hidden');
   div.css('float','left');
   div.css('color','#ffffff');
   $('body').append(div);
 
   $('body').append($('<br clear="all">'));
-  hr = $('<hr>');
-  hr.css('height','4pt');
-  hr.css('color','#ffffff');
-  hr.css('background-color','#ffffff');
-  $('body').append(hr);
+  //hr = $('<hr>');
+  //hr.css('height','4pt');
+  //hr.css('color','#ffffff');
+  //hr.css('background-color','#ffffff');
+  //$('body').append(hr);
 
   for(var i=0;i<40;i++){
     image = $('<img>');
@@ -100,7 +112,26 @@ function display(){
   $('#src').attr('src',"http://gyazo.com/"+src+".png");
   // キーワード表示
   $.getJSON("/attr/"+src, function(attr){
-    $('#comments').text(attr['keywords'].join(", "));
+    keywords = attr['keywords'];
+    $('#comments').children().remove();
+    for(i=0;i<keywords.length;i++){
+      keyword = keywords[i]
+      if(keyword.match(/^http/)){
+        entry = $('<a>');
+        entry.text(keyword);
+        entry.attr('href',keyword);
+      }
+      else {
+        entry = $('<span>');
+        entry.text(keyword);
+      }
+      $('#comments').append(entry);
+      if(i < keywords.length-1){
+        $('#comments').append($('<span>, </span>'));
+      }
+    }
+    //$('#comments').text(data[src]['keywords'].join(", "));
+    //$('#comments').text(attr['keywords'].join(", "));
   });
 
   $.getJSON("/similar/"+src, function(list){
