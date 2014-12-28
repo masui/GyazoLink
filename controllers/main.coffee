@@ -12,8 +12,7 @@ Similarities = mongoose.model 'Similarities'
 module.exports = (app) ->
 
   app.get '/', (req, res) ->
-    return res.render 'index',
-      title: 'GyazoLink'
+    return res.redirect "/index.html"
 
   # Gyazo画像属性のJSONデータを得る
   app.get '/attr/:gyazoid', (req, res) ->
