@@ -14,8 +14,6 @@ gyazodb = connection.db('gyazo')
 STDERR.puts "Gyazo connection established"
 
 attrs_db = gyazodb.collection('attrs')
-sim_db = gyazodb.collection('similarities')
-sim_db.remove # 古いのは消す
 tfidf_db = gyazodb.collection('tfidfs')
 tfidf_db.remove # 古いのは消す
 
@@ -71,55 +69,4 @@ tfidf.each_with_index { |entry,index|
   }
   data['tfidf'] = entry
   tfidf_db.insert(data)
-}
-exit
-
-##### 以下はsimilalityの計算のためのもの。時間がかかるので消す。
-
-STDERR.puts "calculating similar list...."
-STDERR.puts "calculating Norm...."
-norm = []
-(0..ndocuments).each { |ind|
-  d = tfidf[ind]
-  v = 0.0
-  d.each { |key,val|
-    v += val * val
-  }
-  norm[ind] = Math.sqrt(v)
-}
-STDERR.puts "end calculating Norm."
-
-def sim(ind1,ind2,tfidf,norm)
-  tfidf1 = tfidf[ind1]
-  tfidf2 = tfidf[ind2]
-  keywords = tfidf1.keys & tfidf2.keys
-  cos = 0.0
-  keywords.each { |keyword|
-    cos += tfidf1[keyword] * tfidf2[keyword]
-  }
-  cos / (norm[ind1] * norm[ind2])
-end
-
-(0..ndocuments).each { |ind1|
-  STDERR.puts "  document #{ind1}" if ind1 > 0 && ind1 % 1 == 0
-  sims = {}
-  (0..ndocuments).each { |ind2|
-    v = sim(ind1,ind2,tfidf,norm)
-    sims[ind2] = v if v > 0
-  }
-  b = sims.keys.sort { |x,y|
-    sims[y] <=> sims[x]
-  }
-  #STDERR.puts "b.length = #{b.length}"
-  #if b.length > 10000 then
-  #  data = attrs_db.find_one({'gyazoid' => gyazoids[ind1]})
-  #  puts data['keywords']
-  #  puts data['gyazoid']
-  #end
-  b.delete(ind1) # 自分を削除
-
-  data = {}
-  data['gyazoid'] = gyazoids[ind1]
-  data['ids'] = b.collect { |i| gyazoids[i] }[0...40]
-  sim_db.insert(data)
 }
