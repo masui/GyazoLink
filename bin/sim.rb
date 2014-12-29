@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 require 'mongo'
-# require 'tf_idf'
 require 'mecab'
 
 require './tf_idf'
@@ -74,6 +73,8 @@ tfidf.each_with_index { |entry,index|
   tfidf_db.insert(data)
 }
 exit
+
+##### 以下はsimilalityの計算のためのもの。時間がかかるので消す。
 
 STDERR.puts "calculating similar list...."
 STDERR.puts "calculating Norm...."

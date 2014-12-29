@@ -26,7 +26,6 @@ module.exports = (app) ->
     cos / norm[ind1] / norm[ind2]
   
   sims = (n, data) -> # n番目のエントリと他のエントリがどれだけ近いか
-    #console.log "calc sims"
     _.map [0..data.length-1], (ind) -> [
       sim n, ind, data
       data[ind].gyazoid
@@ -38,14 +37,10 @@ module.exports = (app) ->
     _.indexOf a, gyazoid
   
   similar = (gyazoid, data) ->
-    #console.log "calc similar"
     ind = findindex(gyazoid, data)
-    #console.log "index=#{ind}"
     sorted = _.sortBy sims(ind, data), (a) -> -a[0]
       .map (a) -> a[1]
-    #console.log "sorted end"
-    #console.log sorted[0..10]
-    _.without sorted[0..40], gyazoid
+    _.without sorted[0..60], gyazoid
     
   tfidfSchema = new mongoose.Schema
 
@@ -59,17 +54,13 @@ module.exports = (app) ->
     .exec (err, result) ->
       return callback err if err
       return callback "not found" unless result
-      #console.log "xxxxx"
       data = result
-      #console.log "calc norm"
       norm = _.map data, (d) ->
         Math.sqrt _.reduce d.tfidf, (a,b) ->
           a + b * b
         , 0
 
-      #console.log "norm calculated"
       res = similar(gyazoid, data)
-      #console.log res
       callback null, res
 
   mongoose.model 'Tfidf', tfidfSchema

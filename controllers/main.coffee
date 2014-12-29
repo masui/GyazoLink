@@ -40,7 +40,6 @@ module.exports = (app) ->
     gyazoid = req.params.gyazoid
     # Similarities.search gyazoid, (err, result) ->
     Tfidf.search gyazoid, (err, result) ->
-      # console.log result
       res.send
         ids: if result then result else []
 
