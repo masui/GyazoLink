@@ -27,7 +27,7 @@ module.exports = (app) ->
     gyazoid = req.params.gyazoid
     Similarities.search gyazoid, (err, result) ->
       res.send
-        ids: result.ids
+        ids: if result then result.ids else []
 
   # キーワードを含む画像リストを得る
   app.get '/search/:query', (req, res) ->
