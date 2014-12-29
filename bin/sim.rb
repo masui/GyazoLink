@@ -5,6 +5,8 @@ require 'mecab'
 
 require './tf_idf'
 
+require 'json'
+
 m = MeCab::Tagger.new ("-Ochasen")
 
 connection = Mongo::Connection.new
@@ -15,6 +17,8 @@ STDERR.puts "Gyazo connection established"
 attrs_db = gyazodb.collection('attrs')
 sim_db = gyazodb.collection('similarities')
 sim_db.remove # 古いのは消す
+tfidf_db = gyazodb.collection('tfidfs')
+tfidf_db.remove # 古いのは消す
 
 gyazoids = []
 words = []
@@ -56,6 +60,20 @@ STDERR.puts "Total #{gyazoids.length} images, #{totalwords.keys.length} words."
 
 STDERR.puts "calculating TF-IDF...."
 tfidf = TfIdf.new(words).tf_idf
+
+STDERR.puts "ssaving TF-IDF to mongoDB...."
+tfidf.each_with_index { |entry,index|
+  data = {}
+  data['gyazoid'] = gyazoids[index]
+  entry.each { |key,val| # ".", "$" を含むものはMongoで使えない模様
+    if key =~ /\./ || key =~ /^\$/ then
+      entry.delete(key)
+    end
+  }
+  data['tfidf'] = entry
+  tfidf_db.insert(data)
+}
+exit
 
 STDERR.puts "calculating similar list...."
 STDERR.puts "calculating Norm...."

@@ -8,6 +8,7 @@ RSS      = require 'rss'
 
 Attr  = mongoose.model 'Attr'
 Similarities = mongoose.model 'Similarities'
+Tfidf = mongoose.model 'Tfidf'
 
 module.exports = (app) ->
 
@@ -37,9 +38,11 @@ module.exports = (app) ->
   # 類似画像リストを得る
   app.get '/__similar/:gyazoid', (req, res) ->
     gyazoid = req.params.gyazoid
-    Similarities.search gyazoid, (err, result) ->
+    # Similarities.search gyazoid, (err, result) ->
+    Tfidf.search gyazoid, (err, result) ->
+      # console.log result
       res.send
-        ids: if result then result.ids else []
+        ids: if result then result else []
 
   # キーワードを含む画像リストを得る
   app.get '/__search/:query', (req, res) ->
