@@ -42,7 +42,7 @@ app.set 'package', package_json
 
 ## load controllers, models, socket.io ##
 components =
-  models:      [ 'attr', 'similarity', 'tfidf' ]
+  models:      [ 'attr', 'tfidf' ]
   controllers: [ 'main' ]
 
 for type, items of components
