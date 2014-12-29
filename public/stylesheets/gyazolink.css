@@ -1,0 +1,27 @@
+body {
+  background-image: url("http://gyazo.com/d9c8052e9fa19988baba2a31fd5cb917.png")
+  background-position:center 0px;
+  background-repeat:no-repeat;background-color:#021b5b;position:relative;
+  height:631px;
+}
+img.top {
+  margin: 4pt;
+  max-height:180px;
+  max-width:240px;
+  border-radius:5pt;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
+img.sim {
+  margin: 4pt;
+  max-height:120px;
+  max-width:200px;
+  border-radius:5pt;
+  vertical-align: top;
+  box-shadow: 3px 3px rgba(0,0,0,0.4);;
+}
+a:link {
+  color:white;
+}
+a:visited {
+  color:white;
+}
