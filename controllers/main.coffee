@@ -11,7 +11,7 @@ Similarities = mongoose.model 'Similarities'
 
 module.exports = (app) ->
 
-  app.get '/index.html',  (req, res) ->
+  app.get '/',  (req, res) ->
     res.redirect "/similar?id=13809a42c06c10be8bcf22a0f81e5a69"
 
   app.get '/similar', (req, res) ->
