@@ -5,7 +5,14 @@ html
     title query
     link(rel="stylesheet",href="/stylesheets/gyazolink.css",type="text/css")
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js")
-    script(src="/javascripts/gyazolink.js")
     script.
-      src = "#{gyazoid}";
+      var src = "#{gyazoid}";
+    script(src="/javascripts/similar.js")
   body
+    span#topspan 検索:
+    | &nbsp;
+    input#query(type='text')
+    br(clear='all')
+    img.top#src(height='160pt')
+    div#comments(height='160pt')
+    br(clear='all')

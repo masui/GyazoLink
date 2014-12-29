@@ -11,19 +11,20 @@ Similarities = mongoose.model 'Similarities'
 
 module.exports = (app) ->
 
-  app.get '/similarimages', (req, res) ->
-    query = req.query.q
-    return res.render 'index',
-      text: query
-    # return res.redirect "/index.html"
+  app.get '/similar', (req, res) ->
+    gyazoid = req.query.id
+    return res.render 'similar',
+      gyazoid: gyazoid
 
-  #app.get '/sss', (req, res) ->
-  #  return res.render 'index',
-  #    title: 'index'
-  #    attr: [1, 2, 3]
+  app.get '/search', (req, res) ->
+    query = req.query.query
+    return res.render 'search',
+      query: query
+
+  #####  API ######
 
   # Gyazo画像属性のJSONデータを得る
-  app.get '/attr/:gyazoid', (req, res) ->
+  app.get '/__attr/:gyazoid', (req, res) ->
     gyazoid = req.params.gyazoid
     Attr.attr gyazoid, (err, result) ->
       res.send
@@ -31,14 +32,14 @@ module.exports = (app) ->
         keywords: result.keywords
 
   # 類似画像リストを得る
-  app.get '/similar/:gyazoid', (req, res) ->
+  app.get '/__similar/:gyazoid', (req, res) ->
     gyazoid = req.params.gyazoid
     Similarities.search gyazoid, (err, result) ->
       res.send
         ids: if result then result.ids else []
 
   # キーワードを含む画像リストを得る
-  app.get '/search/:query', (req, res) ->
+  app.get '/__search/:query', (req, res) ->
     query = req.params.query
     Attr.search query, (err, result) ->
       res.send

@@ -2,10 +2,14 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    title query
+    title 検索
     link(rel="stylesheet",href="/stylesheets/gyazolink.css",type="text/css")
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js")
-    script(src="/javascripts/gyazolink.js")
     script.
-      src = "#{gyazoid}";
+      var query = "#{query}";
+    script(src="/javascripts/search.js")
   body
+    span#topspan 検索:
+    | &nbsp;
+    input#query(type='text')
+    br(clear='all')
