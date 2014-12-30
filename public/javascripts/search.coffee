@@ -1,4 +1,5 @@
 $ ->
+  $("#query").val(query)
   $("#query").on "keydown", (e) ->
     if e.keyCode == 13
       location.href = "/search?query=#{$(this).val()}"
