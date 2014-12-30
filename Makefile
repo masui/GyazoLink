@@ -1,3 +1,8 @@
+run:
+	cd public/javascripts; coffee -c -b similar.coffee
+	cd public/javascripts; coffee -c -b search.coffee
+	npm start
+
 backup:
 	mongodump -d gyazo
 
