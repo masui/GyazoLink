@@ -16,7 +16,8 @@ tfidf: removedb createdb
 # MongoDBのgyazz, gyazoデータベースを削除
 #
 removedb:
-	ruby removedb.rb
+	ruby remove_gyazz.rb
+	ruby remove_gyazo.rb
 #
 # データベース作成
 #

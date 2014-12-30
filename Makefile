@@ -18,5 +18,7 @@ data:
 #
 datacopy: backup
 	scp -r dump masui.sfc.keio.ac.jp:/Users/masui/GyazoLink
+	ssh masui.sfc.keio.ac.jp 'cd GyazoLink/bin; ruby remove_gyazo.rb'
 	ssh masui.sfc.keio.ac.jp 'cd GyazoLink; /usr/local/bin/mongorestore -d gyazo dump/gyazo'
+
 
