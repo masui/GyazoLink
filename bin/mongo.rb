@@ -34,7 +34,8 @@ def convert(wiki,pages,attrs)
   links = {}
   gyazzdata.each { |title,entry|
     text = entry['text']
-    while text.sub!(/\[\[([^\s\[\]]+)\]\]/,'') do
+    s = text.dup
+    while s.sub!(/\[\[([^\s\[\]]+)\]\]/,'') do
       kw = $1
       unless kw =~ /gyazo.*[0-9a-f]{32}/i then
         links[title] = {} unless links[title]
