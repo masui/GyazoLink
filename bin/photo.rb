@@ -23,7 +23,7 @@ attrs = gyazodb.collection('attrs')
 
 data = JSON.parse(File.read('photodata.json'))
 data.each_with_index { |line,index|
-  STDERR.puts index if index > 0 && index % 100 == 0
+  STDERR.puts index if index > 0 && index % 10000 == 0
   date = line[0]
   gyazoid = line[1]
   url = line[2]

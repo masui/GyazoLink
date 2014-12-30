@@ -58,7 +58,7 @@ STDERR.puts "Total #{gyazoids.length} images, #{totalwords.keys.length} words."
 STDERR.puts "calculating TF-IDF...."
 tfidf = TfIdf.new(words).tf_idf
 
-STDERR.puts "ssaving TF-IDF to mongoDB...."
+STDERR.puts "saving TF-IDF to mongoDB...."
 tfidf.each_with_index { |entry,index|
   data = {}
   data['gyazoid'] = gyazoids[index]

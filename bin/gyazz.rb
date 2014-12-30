@@ -21,7 +21,7 @@ def id(s)
   Digest::MD5.new.update(s)
 end
 
-GyazzDir = "/Volumes/Masui/gyazz.com/Gyazz/data"
+GyazzDir = "/Volumes/Masui/Backups/gyazz.com/Gyazz/data"
 
 $id2title = SDBM.open("#{GyazzDir}/id2title",0666)
 $data = {}
@@ -118,5 +118,3 @@ def find(wiki,attrs)
 end
 
 find("masui",attrs)
-
-
