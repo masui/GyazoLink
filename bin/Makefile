@@ -32,11 +32,14 @@ photo:
 	ruby photo.rb
 
 # custom.jsonからMongoデータ生成(attr)
-custom:
+custom: custom.json
 	ruby custom.rb
 
+custom.json: custom.txt
+	ruby custom2json.rb | jq . > custom.json
+
 # 新GyazzデータからMongoデータ生成
-mongo: datacopy
+mongo: getdb
 	ruby mongo.rb
 
 #  旧GyazzデータからMongoデータ生成
@@ -50,7 +53,7 @@ presen:
 #
 # gyazz.masuilab.org からデータをコピーしてローカルのMongoDBに入れる
 #
-datacopy:
+getdb:
 	ssh masui.sfc.keio.ac.jp 'cd Gyazz; /usr/local/bin/mongodump -d gyazz'
 	scp -r masui.sfc.keio.ac.jp:/Users/masui/Gyazz/dump/gyazz /Users/masui/GyazzCoffee/dump
 	cd /Users/masui/GyazzCoffee; /usr/local/bin/mongorestore -d gyazz dump/gyazz

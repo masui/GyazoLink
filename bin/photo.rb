@@ -39,8 +39,8 @@ data.each_with_index { |line,index|
     keywords << date
     keywords << date_day
     keywords << date_month
-    keywords << "latitude: #{latitude}"
-    keywords << "longitude: #{longitude}"
+    keywords << "latitude: #{latitude}" if latitude.to_s != ''
+    keywords << "longitude: #{longitude}" if longitude.to_s != ''
     keywords << url
     keywords << comment unless comment.to_s =~ /^\s*$/
     data = {}
