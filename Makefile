@@ -36,4 +36,3 @@ all: calc_send
 #
 simple_send: dump_db senddb
 
-

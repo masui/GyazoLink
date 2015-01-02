@@ -38,4 +38,297 @@ a5fdcef5ca8168c6da2594c1f7bdb660
  http://gyazz.masuilab.org/upload/058ae9e81b96a450d6d7bba9fb1db699.graffle
  Gear入力デバイス スケッチいろいろ
  OmniGraffle
+e0025a7c1caa7372968310890b44e732
+ http://gyazz.masuilab.org/upload/0a6a5b2ef51b735635dae4e1127a1311.graffle
+ SFC研究所プロジェクト補助申請2009
+ 申請が通らなかったものだと思う
+ 資金プロポーザル
+ OmniGraffle
+4b4553a75dc785a06403b5b9e9158665
+ http://gyazz.masuilab.org/upload/ce05e9a644e99e6aa72e22006e8ec391.graffle
+ 共進化インタフェース研究提案 to CREST
+ 資金プロポーザル
+ OmniGraffle
+ec7f9260b539c6ad18d7f0d4ce3dbc42
+ http://gyazz.masuilab.org/upload/38a40b19989fe72e6db94afa422ad191.graffle
+ SFC ORF2011ポスタ資料
+ GoldFishなどを展示
+ OmniGraffle
+d2c35a6eae65fd54182850d68d6bdd67
+ http://gyazz.masuilab.org/upload/4d6506815249e0e046c923bf50eda7fb.graffle
+ AndroidのSlimeの状態遷移図
+ OmniGraffle
+e460813b25eb9c4347ad83efcd332c79
+ http://gyazz.masuilab.org/upload/64ad669658ba2f44a64edfec82478cc7.graffle
+ 渋谷の家具セッティング案
+ 結局狭くてあまりうまくいかなかった
+ OmniGraffle
+1797bb050a6b59b8de59b0148d6df9fe
+ http://gyazz.masuilab.org/upload/e2e8d805f682a9c1d0066b8e85f481c4.graffle
+ OmniGraffle
+ GoldFishアイコンデータ
+9f6d01699456c28fe6c91297652df6e5
+ http://gyazz.masuilab.org/upload/64c0af9ed3332b5baeccc46e3ef1f8d2.graffle
+ CHI勉強会での認証システムの紹介
+ OmniGraffle
+ MARASIMとか
+3d5241c91e03955db9085964e895aaac
+ http://gyazz.masuilab.org/upload/ed7859235de33764ee0e9f9ae0b27ad6.graffle
+ OmniGraffle
+ WISS名札
+b6a61a2178667a13e827dff462753e5d
+ http://gyazz.masuilab.org/upload/ba888a444c5b7f9343eacdaaa097bee8.graffle
+ OmniGraffle
+ 福井産業支援センター 講演料請求書
+4c01e29b4ccfaf798ff11aef2a1f0b39
+ http://gyazz.masuilab.org/upload/e0fc9a8b03634e24328ac12854cffbaf.graffle
+ アスキーへの請求書
+ OmniGraffle
+ 201003
+5b8225ff17500dc624dd0430f8d5e977
+ http://gyazz.masuilab.org/upload/f3bfc74aba7d9f711f2d3aeb59cacf4e.graffle
+ OmniGraffleドキュメント新規作成テンプレート
+ 201412 20141231
+fbabdf674b382b729485b14ebc4d7261
+ http://gyazz.masuilab.org/upload/dd19f641dc4c1941c437f7de3d635e8f.graffle
+ 情報処理学会
+ 著作権譲渡契約書
+ 2010
+da5d1d83461ced0c249a2d17b78455e3
+ http://gyazz.masuilab.org/upload/0549ccf2886f5ed05eb8003e9d975181.graffle
+ トヨタ先端技術公募
+ わかりやすさを重要視したインタラクションデザイナ
+ 資金プロポーザル
+ ゲットできなかったけど
+3544ae6c9debf82c0fed497622bf6930
+ http://gyazz.masuilab.org/upload/b24e7aa75750ec2bf284238dea8e7da9.graffle
+ Gear入力デバイススケッチ
+ BoogieBoardで書いたもの
+e45997dd8f0c107ff73cdf6318f13369
+ http://gyazz.masuilab.org/upload/129ebd43c5babfc15c96f3487debbb47.graffle
+ eBookJapan用「本棚エクスプローラ」
+ 書籍検索インタフェースのアイデア
+6cff7ed67b112fcdd3fb62227cb7298b
+ http://gyazz.masuilab.org/upload/7958fd32868fa18c65bf19d92f0cd837.graffle
+ 材木座回覧板
+df75895580b1617a666df5d685a47a6d
+ http://gyazz.masuilab.org/upload/490d50bb4e1889cbc511eb5cca8cca0f.graffle
+ ノッチフィルタによるスイッチ情報取得
+ 回路
+d3a8ed5c6e6989b2b7933f813bfe82c5
+ http://gyazz.masuilab.org/upload/7599ec43ee0da022cafd76f60612ce1c.graffle
+36514a4cda8b8a6a92380dcaa39758ee
+ http://gyazz.masuilab.org/upload/7599ec43ee0da022cafd76f60612ce1c.graffle
+ 芋蔓検索のシナリオ
+ DMM.make
+bab74022bdd12806a912c72ec8d5e604
+ http://gyazz.masuilab.org/upload/51d4cd635c24ad1246e2227e54c7fd2b.graffle
+ 馬場氏富士通推薦状
+9c268c5a19b92aec84ea9bacd09b8418
+ http://gyazz.masuilab.org/upload/6436fd4e9fbc88a363e03d224bb7a7a0.graffle
+ 共進化インタフェース技術
+ CRESTに提案して落ちたもの
+ 資金プロポーザル
+f74b3e08f25e04b4e309ec7a7a5bd886
+ http://gyazz.masuilab.org/upload/0e99de4eefbe1736cf98bf981cddd0cf.graffle
+ 共進化インタフェース技術
+ CRESTに提案して落ちたもの
+ 資金プロポーザル
+99998a1af6fb854031e2ed85391cc54e
+ http://gyazz.masuilab.org/upload/7c1233a4c5ffa63088b67bfc02e1cf78.graffle
+ コルーチンの設営
+ yieldの使い方
+dfc0ed80e6f3f4ddae65524e4e5b2244
+ http://gyazz.masuilab.org/upload/05b84fac8b62937e314c5071b01e3787.graffle
+ 単語編集サイト画面遷移
+33c03d44c8faeb1457cc6d5620c9fd06
+ http://gyazz.masuilab.org/upload/b8d462ec4a283d77fe8e049d8a0a2190.graffle
+ eBookJapan
+ 本棚エクスプローラ
+ 書籍検索
+d8f4a0846c1e06afc9c434cf7dc3e59d
+ http://gyazz.masuilab.org/upload/1c0e4abc90c83c04f89176dba4c41851.graffle
+ データベースの共進化にもとづく共生環境の創出
+ CREST資料?
+b0a6b3a2d0f420b9f7567e99382bbb06
+ http://gyazz.masuilab.org/upload/e2e087561c1db5c5e5b203ab5cbafcfd.graffle
+ ユビキタス環境に適した個人認証手法の開発と実証
+fa131b8ebeee171f79c8e64a4d334b40
+ http://gyazz.masuilab.org/upload/10c427110ef1ad5f3f07d817b1d7aae4.graffle
+ 国内出張旅費申請書
+1ec42a2e90971b0d5ad364520b386b47
+ http://gyazz.masuilab.org/upload/eeac824ca963d8c0de1ee7c087a6b413.graffle
+ かなフリック入力のアイデア
+f57f53caa3880e9cae034427b5baafa9
+ http://gyazz.masuilab.org/upload/045b3738a0760a9eeea57d08305dfd15.graffle
+ CHI勉強会資料
+b4a70dbe6f4d2738ddab48fe093ae2ce
+ http://gyazz.masuilab.org/upload/22f37b1c7f4cf6b7c5b35722205f1034.graffle
+ SFCでのお詫び文書
+ 松本君に沢山バイト代を払ったら時間が問題になった
+eef0bec47ae45c1dad4ba94c209ad69c
+ http://gyazz.masuilab.org/upload/ca6906b6aaf841c1dd25d6ae0a11d232.graffle
+ GoldFishポスタ展示
+ 何故か英語だがどこで発表したものか?
+41e5807fe4bb7daf01218cce077b78e8
+ http://gyazz.masuilab.org/upload/5c19a6fcb7a5439e894fb0487f1c382f.graffle
+ 標語訂正
+ 成績づけを間違ったときのお詫び文書
+1c34e61e6ab13af37fc6a8b31b607f73
+ http://gyazz.masuilab.org/upload/51683890fdc4e62f3622c8c880e6f4a0.graffle
+ VUメータ
+ 「インタフェースの心理学」で使っている
+8744900dec9cee9aca030a18fba5300b
+ http://gyazz.masuilab.org/upload/741a9445f97316e5cae2abac6bae5637.graffle
+ プラグをつまんだときは導通させることによりノイズを発生させないというもの
+ 特許にならないかしらん
+442d8bcbed1eed7140bd33b2379f259a
+ http://gyazz.masuilab.org/upload/23c8497efb21a108da67ea5277ad9fc0.graffle
+ プラレールでフリップフロップ
+caad17552873a7c324488e662015e31b
+ http://gyazz.masuilab.org/upload/0bba2dd0899c99030de36a2b1fa43c34.graffle
+ ウィンドサーフィン
+ ガルガンティア
+030a815b5db447a261b02418b0c221c8
+ http://gyazz.masuilab.org/upload/9dfecb039a7d2c0e3680e8acf80c1c93.jpg
+ ウィンドサーフィン
+8c8bbd23f6571715d92d3e330f087320
+ http://gyazz.masuilab.org/upload/182fe4238c2a9d736baf32b820cdec87.pdf
+ ビッグデータ解析と5次元世界地図システム
+ グローバル環境システムリーダープログラムGESLへの応用
+ 20141021 201410
+ 清木康
+d81513f403ae9700121c9c8e53700cb6
+ http://gyazz.masuilab.org/upload/eb001fad5d86f9f1c6f7f2f16026289c.jpg
+ SFC メディアセンターのFabSpace
+ 3Dプリンタなど
+b877cc73e85bfd53cb53eca3ae9f98c3
+ http://gyazz.masuilab.org/upload/8403412cdf1be9a7a5d74762738f4e0a.pdf
+ 増井の日経エレクトロニクスインタビュー
+ GoldFishなどを宣伝したもの
+2bd64d36ed528871cd6f411a84999313
+ http://gyazz.masuilab.org/upload/12fa697d4e1bf90842cddb6905eb3817.pdf
+ The Death of Passwords?
+ Joseph Bonneau
+ 論文
+a9454ac7b9f8226e08e3649e59aa687e
+ http://gyazz.masuilab.org/upload/b78013e15141ef4f94fd45cad3d32135.png
+ shokai 橋本翔
+ 2014夏のプログラミングシンポジウム
+ WebLindaの発表
+e587601b02830cf99eb88ac533508865
+ http://gyazz.masuilab.org/upload/24abfd37b6f429eed33efbfff0f16845.graffle
+ 名刺をコンタクトインフォ(Contact Info)に利用する方法を考えてたもの
+ 山敷氏の紹介で考えたのだったが
+45b0fcf41d1c39341d9c610b7cd0098a
+ http://gyazz.masuilab.org/upload/0fffcec8474e86a3f400533f6e1007a9.pdf
+ 平成25(2013)確定申告
+ 税金
+cd22920cbe3b2b6bdfa25f127da5aad4
+ http://gyazz.masuilab.org/upload/aed341a83987795be1488edb5d595597.pdf
+ OCNのSIMのパスワード
+3093b513ebe0c81464c75f20680d5976
+ http://gyazz.masuilab.org/upload/0a420959682f1f29ff577768800d18ed.pdf
+ 制約付きドロネー三角形分割を用いた自由形状のイラスト美化手法
+ 森本有紀氏の論文
+ 手書きお絵描きを綺麗にするというもの
+5e9b918b2f02d20cdca09be9a2e9eb2a
+ http://gyazz.masuilab.org/upload/ce44a0adde8a39df00cfa744d8f42d95.png
+ 増井のプロフィール写真
+ EpsonのHMDをつけている
+17ad98c7a97d5d6e5135c9bb0f3425f1
+ http://gyazz.masuilab.org/upload/0775b8443fa0e35c069ec3b51b3d6d32.graffle
+ GyazoBoxアイコン
+2a86b47fc9fc211dae9f3910659eda15
+ http://gyazz.masuilab.org/upload/666be3c63db6415333a8fc1219abe59f.graffle
+ GyazoBoxアイコン
+7511214f0f560d74a424e2aa8a556818
+ http://www.jazzradio.com/currentjazz
+ Current Jazz on JAZZRADIO.com
+af9d9ff74795b2b8642e592f15a8e67a
+ http://gyazz.masuilab.org/upload/f5416944d3294a4791a46a75ad3584a5.graffle
+ GyazoBoxアイコン
+1fa33c2a3cadcfb8eca09cb11b7abcb0
+ http://gyazz.masuilab.org/upload/0de8a174e44f574e52617ec3bdc21530.graffle
+ EpisoPassアイコン
+2e84bb73ed771415dab7b11ad9778676
+ http://gyazz.masuilab.org/upload/346cef0bdcf404b5206cd525260caac8.graffle
+ ズーミングしながら文字が詳細化していくキーボード
+ 入力システム
+ 日本語入力
+8ee0cbf4229b43ae422b136b62688460
+ http://gyazz.masuilab.org/upload/54ea4dd928b09cd4daa64e2944e7ee6c.graffle
+ オペアンプ回路いろいろ
+5c040d9aa64f6a26dbc6be1c59c799d7
+ http://gyazz.masuilab.org/upload/763eab2441d9f4a9b28d0ccd9d4dd12f.graffle
+ 角を三等分する機械
+c445195e175639cf581effb823f395cd
+ http://error888.tumblr.com/post/81382331362/young-japanese-maiko-in-kimono-from-an-original
+ 舞子/着物
+24d4253ae12892f259c26401c86e1e45
+ http://gyazz.masuilab.org/upload/688d1778afadb63971b9da94b9a46359.jpg
+ 建斗のイラスト、壁紙
+33f49bdef68cc2e37386aebd39586f29
+ http://gyazz.masuilab.org/upload/b67ed68c9b40b49dac4b2cf3b8d2b72d.png
+ ガルガンティア壁紙
+4d4ac98c4e5ab97d2e9d88584d8fb7e5
+ http://gyazz.masuilab.org/upload/cac0e788bbfb62a7b154f4d4be8853e1.JPG
+ 材木座 サーフィン 壁紙 夕日
+4b2504394ff8b45d474bbfd2a64f4b75
+ http://gyazz.masuilab.org/upload/6c3e200cc1b7ea1d332ac9a4680fe0c9.png
+ 気合い体重計 Phidgets
+b463eaf487a55aac7937d0e991c6700a
+ http://gyazz.masuilab.org/upload/ec522248bc3d83d97e2b04ba239d02a8.JPG
+ 増井研究室 仲俣さんに取材してもらったときの写真
+3684023b757efeca2d3c696835a7db8d
+ http://gyazz.masuilab.org/upload/adeeac8e094f17de337deb0747560e5d.jpg
+ ウィンドサーフィン プレーニング
+ 材木座
+2b2606f027f4f0e13e3c1bfc1d3b5cca
+ http://gyazz.masuilab.org/upload/03bd2362e20c22565f49d31e6b8139d4.jpg
+ 椎茸
+22a1409dd0be12d51301e1d4c73f45a1
+ http://gyazz.masuilab.org/upload/eed75fff0a82bfc668cc415ba5509e80.jpg
+ ドコモモバイルサイエンス賞の焼肉パーティー
+ 高林哲 永田周一 江渡浩一郎 高田哲二 塚田浩二 小松 神原
+483102c63e4c7b2058a4b10327194085
+ https://www.facebook.com/tdtds/posts/10205477323593124
+ 13×13×13のルービックキューブを解いてるところ
+ これはすごい
+f8b86b230697700a381679a0181e4734
+ http://gyazz.masuilab.org/upload/fd08ebc731f03ae50261783a7900e358.jpg
+ Maker Faire 2012
+551239b48c2e2404b0c46d49665341e8
+ http://gyazz.masuilab.org/upload/9fa532b7382931709e55c5863870c624.pdf
+ 上野博士論文
+d8a3ede15556ceb49e57620e918b1f49
+ http://gyazz.masuilab.org/upload/9bd9a7275686beae98b2769cf8d5167c.doc
+ 著作権譲渡等の承諾書
+665349d29ee9ee89bba399e78af09857
+ http://gyazz.masuilab.org/upload/1f6a07be383d7dc2401e6a3fabc93b52.pdf
+ 津田塾大学栗原研合同合宿
+ 谷川岳ペンション
+0559998ce1606a2f4dc951a91d4e2512
+ http://gyazz.masuilab.org/upload/902b4a30766b3436a4ef549d27e17786.jpg
+ 昔のゲーム用の謎の入力装置
+ Gearの参考になるかもと教えてもらったものだと思う
+4f21fda369a1491f55c3060191fa383f
+ http://gyazz.masuilab.org/upload/d91fa8b4c8e341441325aba4d1beee17.pdf
+ WISS2014でひどい点をつけられた査読結果
+ これはひどい
+843178536cf48ef6b561ebd7db093b5e
+ http://gyazz.masuilab.org/upload/7b5e7de1d44c6a851915fc8b424a5b25.json
+ EpisoPassのなぞなぞ問題
+178ac0c35a34bb70b49b0077a2c53efa
+ 20150102110819
+ 20150102
+ 201501
+ http://gyazz.masuilab.org/upload/12b6660a231914c83b76c03340d8d583.txt
+ 感想とか愚痴とか気楽に書けるようになる
+91742891931400eba4a5b10a7f3669de
+ 20131105153924
+ 20131105
+ 201311
+ http://gyazz.masuilab.org/upload/aed341a83987795be1488edb5d595597.pdf
+ 認証データ
 

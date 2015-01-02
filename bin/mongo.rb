@@ -17,35 +17,42 @@ pages = gyazzdb.collection('pages')
 attrs = gyazodb.collection('attrs')
 
 def convert(wiki,pages,attrs)
-  gyazzdata = {}
-  pages.find('wiki' => wiki).each { |page|
-    title = page['title']
-    timestamp = page['timestamp']
-    gyazzdata[title] = {} unless gyazzdata[title]
-    if gyazzdata[title]['timestamp'].to_i < timestamp.to_i then
-      gyazzdata[title]['timestamp'] = timestamp
-      gyazzdata[title]['text'] = page['text']
-    end
-  }
-  
+  #
+  # ページ内容取得
+  # 同じWiki名/ページタイトルのデータが複数あるので最新のものだけ選ぶ
+  #
+  gyazzdata = Hash[pages.find('wiki' => '増井研').group_by { |page|
+                     page['title']
+                   }.collect { |title,pages|
+                     [
+                      title,
+                      pages.sort { |page1,page2|
+                        page2['timestamp'] <=> page1['timestamp']
+                      }.first
+                     ]
+                   }]
   #
   # リンク解析
+  # AというページにBへのリンクがあるときlinks[A] = [B, ...] となる
   #
-  links = {}
-  gyazzdata.each { |title,entry|
-    text = entry['text']
-    s = text.dup
-    while s.sub!(/\[\[([^\s\[\]]+)\]\]/,'') do
-      kw = $1
-      unless kw =~ /gyazo.*[0-9a-f]{32}/i then
-        links[title] = {} unless links[title]
-        links[title][kw] = true
-        links[kw] = {} unless links[kw]
-        links[kw][title] = true
-      end
-    end
-  }
+  links = Hash[gyazzdata.map { |title,entry|
+                 entry['text'].scan(/\[\[([^\s\[\]]+)\]\]/).map { |keywords|
+                   keywords.find_all { |keyword|
+                     keyword =~ /gyazo.*[0-9a-f]{32}/i
+                   }.map { |keyword|
+                     [[title, keyword], [keyword, title]]
+                   }.reduce([]){ |a,b| a+b }
+                 }.reduce([]){ |a,b| a+b }
+               }.reduce([]){ |a,b| a+b
+               }.group_by { |entry|
+                 entry[0]
+               }.map { |key,val|
+                 [key, val.map { |e| e[1] }.uniq]
+               }]
   
+  #
+  # Gyazo用データ出力
+  #
   gyazzdata.each { |title,entry|
     pagelinks = {}
     text = entry['text']
@@ -64,9 +71,12 @@ def convert(wiki,pages,attrs)
         pagelinks[kw] = true
       end
       if links[title] then
-        links[title].each { |key,val|
-          pagelinks[key] = true
+        links[title].each { |entry|
+          pagelinks[entry] = true
         }
+        #links[title].each { |key,val|
+        #  pagelinks[key] = true
+        #}
       end
       STDERR.puts "pagelinks = #{pagelinks.keys.join('/')}"
       
@@ -103,3 +113,4 @@ end
   
 convert('増井研',pages,attrs)
 convert('osusume',pages,attrs)
+
