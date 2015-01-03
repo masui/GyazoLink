@@ -11,3 +11,23 @@ Gyazo画像のコメント/属性を利用して芋蔓検索を行なう。
 * 画像の類似度はTF-IDFで計算
 * クリックした画像に近いものをリストする
 * コメントからテキスト検索も可能
+
+GeoJSONというのを使う場合
+
+```
+> use gyazo
+> db.attrs.ensureIndex({'loc': '2dsphere'})
+```
+とするようなのだがRubyからこれを呼べないので
+
+```
+> db.attrs.ensureIndex({'loc': '2d'})
+```
+
+という「legacy」なやり方で登録する。
+
+```
+db.attrs.find({loc: {$near: [139.73, 35.63]}})
+```
+のようにして近いデータを検索できる。
+

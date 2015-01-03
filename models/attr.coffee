@@ -16,6 +16,8 @@ module.exports = (app) ->
       type: Array
     keywords:
       type: Array
+    loc:
+      type: Array
 
   attrSchema.statics.attr = (gyazoid, callback) ->
     @findOne

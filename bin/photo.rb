@@ -39,14 +39,18 @@ data.each_with_index { |line,index|
     keywords << date
     keywords << date_day
     keywords << date_month
-    keywords << "latitude: #{latitude}" if latitude.to_s != ''
-    keywords << "longitude: #{longitude}" if longitude.to_s != ''
     keywords << url
     keywords << comment unless comment.to_s =~ /^\s*$/
     data = {}
     data['gyazoid'] = gyazoid
     data['keywords'] = keywords
+    if latitude.to_s != '' then
+      data['loc'] = [longitude, latitude]
+      #data['loc'] = {
+      #  'type' => 'Point',
+      #  'coordinates' => [longitude, latitude]
+      #}
+    end
     attrs.insert(data)
   end
 }
-
