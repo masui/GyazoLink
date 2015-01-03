@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 # -*- coding: utf-8 -*-
 #
-# GyazzデータをGyazoLinkで使うMongoデータに変換
+# 古いGyazzデータをGyazoLinkで使うMongoデータに変換
 # collectionは "attr"
 #
 require 'mongo'
@@ -21,10 +21,10 @@ def id(s)
   Digest::MD5.new.update(s).to_s
 end
 
+# バックアップのファイルを使う
 GyazzDir = "/Volumes/Masui/Backups/gyazz.com/Gyazz/data"
 
 id2title = SDBM.open("#{GyazzDir}/id2title",0666)
-data = {}
 
 def find(wiki,attrs,id2title)
   pair = SDBM.open("#{GyazzDir}/#{id(wiki)}/pair",0666)
