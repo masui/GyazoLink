@@ -1,8 +1,7 @@
-#! /usr/bin/env ruby
 # -*- coding: utf-8 -*-
 #
 # PresentationデータをGyazoLinkで使うMongoデータに変換
-# collectionは "attr"
+# Mongoのcollectionは "attr"
 #
 require 'mongo'
 require 'find'
@@ -15,49 +14,55 @@ STDERR.puts "Gyazo connection established"
 
 attrs = gyazodb.collection('attrs')
 
-def process(title,text,keywords,attrs)
-  # STDERR.puts "title=#{title}"
-  gyazoids = []
-  s = text.dup
-  k = keywords.dup
-  while s.sub!(/\[\[.*gyazo.*\/([0-9a-f]{32})/i,'') do
-    gyazoid = $1
-    gyazoids << gyazoid
-  end
-
-  # STDERR.puts "keywords = #{k.join('--')}"
-  while s.sub!(/\[\[([^\s\[\]]+)\]\]/,'') do
-    kw = $1
-    next if kw =~ /.(jpg|png|gif)$/
-    k << kw
-  end
-
-  gyazoids.each { |gyazoid|
-    data = attrs.find_one('gyazoid' => gyazoid)
-    data = {} unless data
-    text.strip!
-    text.gsub!(/\t/,' ')
-    unless data['text'] then
-      data['text'] = [text]
-    else
-      data['text'] << text unless data['text'].member?(text)
-    end
-    data['keywords'] = [] unless data['keywords']
-    kk = {}
-    kk[title] = true
-    k.each { |keyword|
-      kk[keyword] = true
+def process_page(lines, file_keywords, attrs)
+  text = lines.join
+  gyazoids = text.scan(/\[\[.*gyazo.*\/([0-9a-f]{32})/).map { |matches|
+    matches[0]
+  }
+  if gyazoids.length > 0
+    keywords = text.scan(/\[\[([^\s\[\]]+)\]\]/).find_all { |matches|
+      matches[0] !~ /gyazo.*[0-9a-f]{32}/i
+    }.map { |matches|
+      matches[0]
+    } + file_keywords
+    #
+    # Mongo出力
+    #
+    gyazoids.each { |gyazoid|
+      data = attrs.find_one('gyazoid' => gyazoid).to_h
+      data['text'] = data['text'].to_a + lines
+      data['keywords'] = data['keywords'].to_a + lines + keywords
+      data['gyazoid'] = gyazoid
+      if data['_id'] then
+        attrs.update({'_id' => data['_id']}, data)
+      else
+        id = attrs.insert(data)
+      end
     }
-    data['keywords'].each { |keyword|
-      kk[keyword] = true
-    }
-    data['keywords'] = kk.keys
-    data['gyazoid'] = gyazoid
-    if data['_id'] then
-      attrs.update({'_id' => data['_id']}, data)
+  end
+end
+
+#
+# ページごとに分割
+#
+def process_slide_text(path, keywords, attrs)
+  lines = NKF.nkf('-w', File.read(path)).split(/\n/).find_all { |line|
+    line !~ /^[%#]/ && line !~ /^\s*$/
+  }
+  pages = []
+  pagenum = nil
+  lines.each { |line|
+    if line =~ /^\S/ then
+      pagenum = (pagenum ? pagenum+1 : 0)
+      pages[pagenum] = [line.strip]
+      true
     else
-      id = attrs.insert(data)
+      pages[pagenum].push(line.strip)
+      false
     end
+  }
+  pages.each { |page|
+    process_page(page, keywords, attrs)
   }
 end
 
@@ -66,38 +71,10 @@ Find.find("/Users/masui/Presentations") do |path|
     STDERR.puts path
     keywords = []
     if path =~ /(\d{8})\-(\w+)\/(\d{8})\-(\w+)\/slide.txt$/ then
-      date1 = $1
-      cat1 = $2
-      date2 = $3
-      cat2 = $4
-      keywords = [date1, cat1, date2, cat2]
+      keywords = [$1, $2, $3, $4]
     elsif path =~ /(\d{8})\-(\w+)\/slide.txt$/ then
-      date1 = $1
-      cat1 = $2
-      keywords = [date1, cat1]
+      keywords = [$1, $2]
     end
-
-    title = ""
-    text = ""
-    File.open(path) { |f|
-      f.each { |line|
-        line.chomp!
-        line = NKF.nkf('-w', line)
-        if line =~ /^\S/ then
-          if text != "" then
-            process(title,text,keywords,attrs)
-          end
-          unless line =~ /^[\#\%]/ then
-            title = line
-            text = ""
-          end
-        else
-          text += "#{line}\n"
-        end
-      }
-    }
-    if text != ''
-      process(title,text,keywords,attrs)
-    end
+    process_slide_text(path, keywords, attrs)
   end
 end

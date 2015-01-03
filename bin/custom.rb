@@ -17,10 +17,11 @@ attrs = gyazodb.collection('attrs')
 customdata = JSON.parse(File.read("custom.json"))
 
 customdata.each { |gyazoid, attr|
-  puts attr
-  data = {}
-  data['text'] = attr['text']
-  data['keywords'] = attr['keywords']
-  data['gyazoid'] = gyazoid
+  p attr
+  data = {
+    'text' => attr['text'],
+    'keywords' => attr['keywords'],
+    'gyazoid' => gyazoid
+  }
   attrs.insert(data)
 }
