@@ -55,10 +55,8 @@ def process_slide_text(path, keywords, attrs)
     if line =~ /^\S/ then
       pagenum = (pagenum ? pagenum+1 : 0)
       pages[pagenum] = [line.strip]
-      true
     else
       pages[pagenum].push(line.strip)
-      false
     end
   }
   pages.each { |page|

@@ -18,15 +18,15 @@ STDERR.puts "Gyazo connection established"
 attrs = gyazodb.collection('attrs')
 
 def id(s)
-  Digest::MD5.new.update(s)
+  Digest::MD5.new.update(s).to_s
 end
 
 GyazzDir = "/Volumes/Masui/Backups/gyazz.com/Gyazz/data"
 
-$id2title = SDBM.open("#{GyazzDir}/id2title",0666)
-$data = {}
+id2title = SDBM.open("#{GyazzDir}/id2title",0666)
+data = {}
 
-def find(wiki,attrs)
+def find(wiki,attrs,id2title)
   pair = SDBM.open("#{GyazzDir}/#{id(wiki)}/pair",0666)
   links = {}
   pair.each { |key,val|
@@ -36,74 +36,33 @@ def find(wiki,attrs)
     links[key2] = {} unless links[key2]
     links[key2][key1] = true
   }
-  count = 0
   Find.find("#{GyazzDir}/#{id(wiki)}") do |f|
-    # puts f
-
-    # return if count > 200
-    # count += 1
-
     title = ""
-    # if f =~ /\/([0-9a-f]{32})\/([0-9a-f]{32})\/([0-9]{14})/ then
     if f =~ /\/([0-9a-f]{32})\/([0-9a-f]{32})\/curfile$/ then
       wikiid = $1
       titleid = $2
-      date = $3
-      wiki = $id2title[wikiid]
-      title = $id2title[titleid]
-      if wiki != 'test' && title != 'test' then
+      wiki = id2title[wikiid].to_s
+      title = id2title[titleid].to_s
+      if wiki != 'test' && title != 'test' && title != '' then
         if wiki && wiki != '' then
-          # puts "#{date} #{wiki}/#{title}"
-          pagelinks = {}
-          text = File.read(f)
-          text = NKF.nkf('-w', text)
-          s = text.dup
-          have_gyazo = false
-          gyazoids = []
-          while s.sub!(/\[\[.*gyazo.*\/([0-9a-f]{32})/i,'') do
-            gyazoid = $1
-            gyazoids << gyazoid
-            STDERR.puts "#{gyazoid} #{wiki} #{title}"
-
-            have_gyazo = true
-          end
-          if have_gyazo
-            while s.sub!(/\[\[([^\s\[\]]+)\]\]/,'') do
-              kw = $1
-              pagelinks[kw] = true
-            end
-            if links[title] then
-              links[title].each { |key,val|
-                pagelinks[key] = true
-              }
-            end
-            STDERR.puts "pagelinks = #{pagelinks.keys.join('/')}"
-
+          STDERR.puts "#{wiki}/#{title}"
+          text = NKF.nkf('-w', File.read(f))
+          gyazoids = text.scan(/\[\[.*gyazo.*\/([0-9a-f]{32})/).map { |matches|
+            matches[0]
+          }
+          if gyazoids.length > 0
+            keywords = text.scan(/\[\[([^\s\[\]]+)\]\]/).find_all { |matches|
+              matches[0] !~ /gyazo.*[0-9a-f]{32}/i
+            }.map { |matches|
+              matches[0]
+            } + links[title].to_h.keys
             # 出力
             gyazoids.each { |gyazoid|
-              next if title.to_s == ''
-
-              data = attrs.find_one('gyazoid' => gyazoid)
-              data = {} unless data
-
-              unless data['text'] then
-                data['text'] = [text]
-              else
-                data['text'] << text unless data['text'].member?(text)
-              end
-
-              data['keywords'] = [] unless data['keywords']
-              keywords = {}
-              keywords[title] = true
-              data['keywords'].each { |keyword|
-                keywords[keyword] = true
-              }
-              pagelinks.keys.each { |keyword|
-                keywords[keyword] = true
-              }
-              data['keywords'] = keywords.keys
+              data = attrs.find_one('gyazoid' => gyazoid).to_h
+              data['text'] = data['text'].to_a + [text]
+              data['keywords'] = data['keywords'].to_a + keywords
+              STDERR.puts "#{data['keywords'].join('/')}"
               data['gyazoid'] = gyazoid
-
               if data['_id'] then
                 attrs.update({'_id' => data['_id']}, data)
               else
@@ -117,4 +76,4 @@ def find(wiki,attrs)
   end
 end
 
-find("masui",attrs)
+find("masui",attrs,id2title)
