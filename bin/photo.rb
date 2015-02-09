@@ -20,6 +20,7 @@ gyazodb = connection.db('gyazo')
 STDERR.puts "Gyazo connection established"
 
 attrs = gyazodb.collection('attrs')
+attrs.ensure_index({"loc" => "2dsphere"})
 
 data = JSON.parse(File.read('photodata.json'))
 data.each_with_index { |line,index|
@@ -45,11 +46,11 @@ data.each_with_index { |line,index|
     data['gyazoid'] = gyazoid
     data['keywords'] = keywords
     if latitude.to_s != '' then
-      data['loc'] = [longitude, latitude]
-      #data['loc'] = {
-      #  'type' => 'Point',
-      #  'coordinates' => [longitude, latitude]
-      #}
+      #data['loc'] = [longitude, latitude]
+      data['loc'] = {
+        'type' => 'Point',
+        'coordinates' => [longitude, latitude]
+      }
     end
     attrs.insert(data)
   end

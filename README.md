@@ -31,3 +31,11 @@ db.attrs.find({loc: {$near: [139.73, 35.63]}})
 ```
 のようにして近いデータを検索できる。
 
+
+新しい近傍検索のやり方
+http://docs.mongodb.org/manual/reference/operator/query/near/
+http://stackoverflow.com/questions/22881401/mongodb-find-query-with-near-and-coordinates-not-working
+GeoJSON
+http://s.kitazaki.name/docs/geojson-spec-ja.html
+2Dshpere index
+http://docs.mongodb.org/manual/core/2dsphere/
