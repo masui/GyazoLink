@@ -8,9 +8,9 @@ alldata:
 	ruby alldata.rb | jq . > data.json
 
 
-ids:
+ids: data.json
 	ruby ids.rb | jq . > ids.json
-tfidf:
+tfidf: data.json
 	ruby tfidf.rb | jq . > tfidf.json
 sim: ids tfidf
 	ruby sim.rb | jq . > sim.json

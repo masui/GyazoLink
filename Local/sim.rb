@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+#
+# 各IDのGyazo画像に近い画像のリストを生成しておく
+#
 require 'json'
 
 tfidf = JSON.parse(File.read('tfidf.json'))
