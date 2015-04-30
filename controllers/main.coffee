@@ -40,7 +40,7 @@ module.exports = (app) ->
     Tfidf.search gyazoid, (err, result) ->
       res.send
         ids: if result then result else []
-
+    
   # キーワードを含む画像リストを得る
   app.get '/__search/:query', (req, res) ->
     query = req.params.query

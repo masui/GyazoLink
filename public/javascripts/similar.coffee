@@ -1,5 +1,7 @@
 src = '1ae719bf0c4eb8607f1cb9b385dbad92' unless src
 
+res = []
+
 $ ->
   $("#query").on "keydown", (e) ->
     if e.keyCode == 13
@@ -24,8 +26,34 @@ $ ->
       if i < keywords.length - 1
         $('#comments').append $('<span>, </span>')
 
-  $.getJSON "/__similar/#{src}", (list) ->
-    show_images list['ids']
+  # $.getJSON "/__similar/#{src}", (list) ->
+  #  show_images list['ids']
+
+  # elastic.gyazo.com のElasticSearch利用の場合
+  $.ajax
+    type: "POST"
+    url: "http://elastic.gyazo.com/masui/test/_search"
+    dataType: 'json'
+    data: 
+      JSON.stringify
+        "query":
+          "more_like_this":
+            "fields": ["text", "keywords"]
+            "ids": [ src ]
+            "min_term_freq": 1
+            "min_doc_freq": 1
+    success: (result) ->
+      hits = result['hits']['hits']
+      for hit in hits
+        res.push hit['_source']['image_id']
+    #beforeSend: function(xhr) { # 認証うまくいかない
+    #  var credentials = $.base64.encode("masui:gyazz");
+    #  xhr.setRequestHeader("Authorization", "Basic " + credentials);
+    #},
+  .done ->
+    show_images res
+  .fail (xhr, status, error) ->
+    alert "Error = #{error}"
 
 show_images = (gyazoids) ->
   $('.sim').remove()
