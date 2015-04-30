@@ -24,6 +24,7 @@ $ ->
         "query":
           "match":
             "keywords": query
+        "size": 20
     success: (result) ->
       hits = result['hits']['hits']
       for hit in hits

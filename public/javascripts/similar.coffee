@@ -42,6 +42,9 @@ $ ->
             "ids": [ src ]
             "min_term_freq": 1
             "min_doc_freq": 1
+            "min_word_len": 2
+            "max_query_terms": 3
+        "size": 20
     success: (result) ->
       hits = result['hits']['hits']
       for hit in hits
